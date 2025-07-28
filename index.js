@@ -88,6 +88,11 @@ app.use(async (req, res, next) => {
     next();
 });
 
+app.get('/', (req, res) => {
+  res.redirect('/home');
+});
+
+
 app.get('/home', async (req, res) => {
     console.log("💻 res.locals.currentUser:", res.locals.currentUser);
     res.render('home');
