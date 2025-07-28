@@ -9,7 +9,7 @@ const MongoStore = require('connect-mongo');
 const expressLayouts = require('express-ejs-layouts');
 const flash = require('connect-flash');
 const methodOverride = require('method-override');
-// require('dotenv').config();
+require('dotenv').config();
 
 
 const app = express();
