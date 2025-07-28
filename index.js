@@ -44,7 +44,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
-        mongoUrl: 'mongodb://localhost:27017/feedback_collect',
+        mongoUrl: process.env.MONGO_URI,
         touchAfter: 24 * 3600 // session only updates once a day
     }),
     cookie: {
