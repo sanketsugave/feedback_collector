@@ -130,12 +130,15 @@ app.get('/user', (req,res) => {
 });
 
 app.post('/user', async(req,res) =>{
+
+    const { email, password } = req.body.user;
+
     if (!email || !password) {
        req.flash('error', 'Email and password required');
        return res.redirect('/user');
     }
 
-    const { email, password } = req.body.user;
+    
     const newUser = await new User({ email, password });
     await newUser.save();
     req.flash('success', 'Registered successfully!');
