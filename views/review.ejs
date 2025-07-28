@@ -1,0 +1,63 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review</title>
+</head>
+
+<body>
+    <form action="/review" method="post">
+        <label for="review">Write a review</label>
+        <textarea name="review[review]" id="review" required minlength="20"></textarea>
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</body>
+
+</html> -->
+
+<div class="container my-5">
+    <h1 class="mb-4 text-center">📝 Submit a Review</h1>
+
+    <div class="card shadow-sm mb-5">
+        <div class="card-body">
+            <form action="/review" method="POST">
+                <div class="mb-3">
+                    <textarea class="form-control" name="review" rows="4" placeholder="Write your review..."
+                        required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit Review</button>
+            </form>
+        </div>
+    </div>
+
+    <hr class="my-5" />
+
+    <h2 class="text-center mb-4">📚 All Reviews</h2>
+
+    <% if (reviews.length===0) { %>
+        <p class="text-muted text-center">No reviews yet. Be the first one!</p>
+        <% } %>
+
+            <% reviews.forEach(r=> { %>
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            👤 <%= r.user.email %>
+                        </h5>
+                        <p class="card-text">
+                            <%= r.review %>
+                        </p>
+                    </div>
+                    <form action="/review/<%= r._id %>?_method=DELETE" method="POST" class="d-inline">
+                        <button class="btn btn-sm btn-danger">Delete</button>
+                    </form>
+
+                    <a href="/review/<%= r._id %>/edit" class="btn btn-sm btn-warning">Edit</a>
+
+                </div>
+                <% }) %>
+</div>

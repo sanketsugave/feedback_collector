@@ -1,0 +1,19 @@
+<div class="container my-5 text-center">
+    <h1 class="mb-4">🎉 Welcome to <span class="text-primary">Feedback Collector</span></h1>
+
+    <% if (!currentUser) { %>
+        <p class="lead text-muted mb-4">Please register or log in to submit reviews.</p>
+        <a href="/user" class="btn btn-success me-2">Register</a>
+        <a href="/login" class="btn btn-primary">Login</a>
+        <% } else { %>
+            <div class="alert alert-success mb-4" role="alert">
+                Logged in as <strong>
+                    <%= currentUser.email %>
+                </strong>
+            </div>
+            <a href="/review" class="btn btn-warning me-2">✍️ Write a Review</a>
+            <form action="/logout" method="POST" class="d-inline">
+                <button type="submit" class="btn btn-outline-danger">Logout</button>
+            </form>
+            <% } %>
+</div>
