@@ -9,12 +9,13 @@ const MongoStore = require('connect-mongo');
 const expressLayouts = require('express-ejs-layouts');
 const flash = require('connect-flash');
 const methodOverride = require('method-override');
+// require('dotenv').config();
 
 
 const app = express();
 
 
-mongoose.connect('mongodb://localhost:27017/feedback_collect');
+mongoose.connect(process.env.MONGO_URI);
 
 const db = mongoose.connection;
 db.on("error" , console.error.bind(console, "connection error"));
