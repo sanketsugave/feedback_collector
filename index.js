@@ -106,13 +106,13 @@ app.get('/review', isLoggedIn , async (req,res) =>{
 })
 
 app.post('/review', isLoggedIn, async (req,res) =>{
-    if (!email || !password) {
-      req.flash('error', 'Email and password required');
-      return res.redirect('/user');
-    }
-
+    // if (!email || !password) {
+    //   req.flash('error', 'Email and password required');
+    //   return res.redirect('/user');
+    // }
     if (!req.session.userId) {
-        return res.status(401).send("Please log in to submit a review");
+        // return res.status(401).send("Please log in to submit a review");
+        return res.redirect('/login');
     }
 
     const newReview = new Review({
